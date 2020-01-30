@@ -1,20 +1,21 @@
-//import java.util.ArrayList;
-//
-//public class CheckboxQuestion extends Question{
-//    private String question;
-//    private String[] possibleAnswers;
-//    private String[] answers;
-//
-//    public CheckboxQuestion(String question, String[] possibleAnswers, String[] answers){
-//        this.question = question;
-//        this.possibleAnswers = possibleAnswers;
-//        this.answers = answers;
-//    };
-//
-//    public boolean checkAnswer(String input){
-//        public boolean checkAnswer(String input){
-//            int index = Integer.parseInt(input);
-//            return possibleAnswers[index].equals(answer);
-//        };
-//    };
-//}
+public class CheckboxQuestion extends Question{
+
+    public CheckboxQuestion(String question, String[] answers, String[] possibleAnswers) {
+        super((question + "\nEnter ALL correct answers in order, on one line, separated by commas: "), possibleAnswers, answers);
+    }
+
+
+    public boolean checkAnswer(String input){
+        String[] tempInput = input.split(",");
+        String[] tempAnswers = getAnswers();
+        for (String answer : tempAnswers){
+            answer = answer.toLowerCase();
+        }
+        for (String inputString : tempInput){
+            inputString = inputString.trim().toLowerCase();
+        }
+
+        return tempAnswers.equals(tempInput);
+    };
+
+}

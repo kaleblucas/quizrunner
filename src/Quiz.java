@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Quiz {
@@ -12,7 +13,8 @@ public class Quiz {
 
     public void runQuiz(){
         for(Question question : questions){
-            System.out.println(question.getQuestion());
+            System.out.println("QUESTION: " + question.getQuestion());
+            System.out.println("CHOICES: " + question.listStringOfPossibleAnswers());
             String response = input.nextLine();
             if(question.checkAnswer(response)){
                 correctAnswers++;
